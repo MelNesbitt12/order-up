@@ -1,0 +1,10 @@
+.NavigationItems {
+  margin: 0;
+  padding: 0;
+  /* going to be added to an unordered list, so don't want default list style */
+  list-style: none;
+  display: flex;
+  align-items: center;
+  /* full height of toolbar */
+  height: 100%;
+}

@@ -1,0 +1,24 @@
+.Toolbar {
+  height: 56px;
+  width: 100%;
+  /* always at top even when scrolling */
+  position: fixed;
+  /* sit at top */
+  top: 0;
+  left: 0;
+  background-color: #dab785;
+  /* items in toolbar aligned next to each other */
+  display: flex;
+  justify-content: space-between;
+  /* how items should be aligned vertically */
+  align-items: center;
+  padding: 0 20px;
+  /* toolbar is sized correctly */
+  box-sizing: border-box;
+  /* must be lower than the number we choose for the backdrop. Backdrop should go above toolbar */
+  z-index: 90;
+}
+
+.Toolbar nav {
+  height: 100%;
+}
