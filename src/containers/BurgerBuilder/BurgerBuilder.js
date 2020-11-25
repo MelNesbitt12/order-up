@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Aux from '../../hoc/Aux'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
-
+import Modal from '../../components/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 const ingredientPrices = {
   lettuce: 0.5,
@@ -21,7 +22,8 @@ class BurgerBuilder extends Component {
         meat: 0
     },
     totalPrice: 4,
-    readyToPurchase: false
+    readyToPurchase: false,
+    purchasing: false
   }
 
   // method to update the readyToPurchase state. ingredient state is passed into this function
@@ -84,6 +86,18 @@ class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIngredients)
   }
 
+  purchaseHandler = () => {
+    this.setState({ purchasing: true })
+  }
+
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false })
+  }
+
+  purchaseContinueHandler = () => {
+    alert('You Continued!')
+  }
+
   render() {
     // rendering buttons disabled
     const disabledInfo = {
@@ -98,13 +112,23 @@ class BurgerBuilder extends Component {
     // pass ingredients state to burger
     return (
       <Aux>
+        <Modal show={this.state.purchasing} modalClose={this.purchaseCancelHandler}>
+          <OrderSummary
+            ingredients={this.state.ingredients}
+            price={this.state.totalPrice}
+            purchaseCanceled={this.purchaseCancelHandler}
+            purchaseContinued={this.purchaseContinueHandler}
+            />
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           disabled={disabledInfo}
           price={this.state.totalPrice}
-          purchase={this.state.readyToPurchase}/>
+          purchase={this.state.readyToPurchase}
+          ordered={this.purchaseHandler}
+          />
      </Aux>
     )
   }
