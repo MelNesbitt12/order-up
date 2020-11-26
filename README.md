@@ -1,4 +1,4 @@
-  # Order Up! A Burger Builder Application
+# Order Up! A Burger Builder Application
 
 ![Order Up](https://user-images.githubusercontent.com/59749085/100276574-c3360d80-2f2f-11eb-8580-9f2b2bb48f67.png)
 
