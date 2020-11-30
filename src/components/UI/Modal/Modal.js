@@ -7,8 +7,8 @@ import Backdrop from '../Backdrop/Backdrop'
 class Modal extends Component {
   // making sure that we do not unnecessarily re-render OrderSummary within the wrapping Modal element
   shouldComponentUpdate (nextProps, nextState) {
-    // return true if the show property has changed
-    return nextProps.show !== this.props.show
+    // return true if the show property has changed OR if the props.children changed (ie the loading property has changed)
+    return nextProps.show !== this.props.show || nextProps.children !== this.props.children
   }
   componentDidUpdate () {
     console.log('[Modal] will update')
